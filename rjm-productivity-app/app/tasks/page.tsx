@@ -12,7 +12,7 @@ export default async function Tasks() {
 
   async function fetchData() {
     const url = "https://api.linear.app/graphql";
-    const query = '{ "query": "{ issues { nodes { id title } } }" }';
+    const query = '{ "query": "{ issues { nodes { id title state { description type } } } }" }';
 
     try {
       const response = await fetch(url, {
