@@ -1,8 +1,1 @@
-{
-	"quests": [
-		{
-			"title": "Boar problem",
-			"objective": "Kill 10 boars"
-		}
-	]
-}
+{"quests":[{"title":"Boar problem","objective":"Kill 10 boars"},{"title":"Tuskers","objective":"Collect 5 tusks"},{"title":"Mithrandir","objective":"Kill gandalf"}]}
