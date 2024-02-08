@@ -1,5 +1,6 @@
 import { getQuests } from '@/app/rpg/actions';
 import AddQuest from './add-quest';
+import Panel from '@/app/_components/ui/panel';
 
 export default async function Quests() {
     // what's the correct way to handle fetching data and transform etc?
@@ -17,11 +18,13 @@ export default async function Quests() {
 
     return (
         <>
-            <h1>Quests page</h1>
-            <AddQuest />
-            <ul>
-                <QuestList />
-            </ul>
+            <Panel outerClassNames='w-96'>
+                <header className='text-center'>Quests</header>
+                <AddQuest />
+                <ul className='p-6'>
+                    <QuestList />
+                </ul>
+            </Panel>
         </>
     )
 }
