@@ -1,1 +1,24 @@
-{"quests":[{"title":"Boar problem","objective":"Kill 10 boars"},{"title":"Tuskers","objective":"Collect 5 tusks"},{"title":"Mithrandir","objective":"Kill gandalf"}]}
+{
+    "quests": [
+        {
+            "id": 1,
+            "title": "Boar problem",
+            "objective": "Kill 10 boars"
+        },
+        {
+            "id": 2,
+            "title": "Tuskers",
+            "objective": "Collect 5 tusks"
+        },
+        {
+            "id": 3,
+            "title": "Mithrandir",
+            "objective": "Kill gandalf"
+        },
+        {
+            "id": 4,
+            "title": "Snazzy",
+            "objective": "Create nice UI"
+        }
+    ]
+}

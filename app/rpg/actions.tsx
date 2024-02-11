@@ -20,7 +20,8 @@ export async function createQuest(formData: FormData) {
     };
     
     const { quests } = await _getQuestData();
-    quests.push(newQuest);
+    const id = quests.toReversed()[0].id + 1;
+    quests.push({ id, ...newQuest });
     await _writeQuestData(quests);
     revalidatePath('/quests');
 }
@@ -29,8 +30,8 @@ export async function createQuest(formData: FormData) {
 export async function getQuests(): Promise<Quest[]> {
     const questDataObj = await _getQuestData();
     return questDataObj.quests;
-
 }
+
 
 async function _getQuestData(): Promise<{quests: Quest[]}> {
     const questFileData = await fs.readFile(process.cwd() + questStorePath, 'utf8');
