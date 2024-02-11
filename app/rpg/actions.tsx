@@ -1,9 +1,7 @@
 'use server'
-import * as fs from 'node:fs/promises';
 import { Quest } from './quests/quests';
 import { revalidatePath } from 'next/cache';
-
-const questStorePath = '/app/rpg/quests/quests.json';
+import store from './quests/quest-store';
 
 export async function createQuest(formData: FormData) {
     const title: string = formData.get('questTitle') as string;
@@ -19,28 +17,22 @@ export async function createQuest(formData: FormData) {
         objective 
     };
     
-    const { quests } = await _getQuestData();
+    const { quests } = await store.getQuestData();
     const id = quests.toReversed()[0].id + 1;
     quests.push({ id, ...newQuest });
-    await _writeQuestData(quests);
+    await store.writeQuestData(quests);
     revalidatePath('/quests');
 }
 
 
 export async function getQuests(): Promise<Quest[]> {
-    const questDataObj = await _getQuestData();
+    const questDataObj = await store.getQuestData();
     return questDataObj.quests;
 }
 
 
-async function _getQuestData(): Promise<{quests: Quest[]}> {
-    const questFileData = await fs.readFile(process.cwd() + questStorePath, 'utf8');
-    const questDataObj = JSON.parse(questFileData); 
-    return questDataObj;
-}
- 
+// export async function completeQuest(quest: Quest): Promise<void> {
+//     const questDataObj = await _getQuestData();
+//     questDataObj.quests.find(quest => quest)
+// }
 
-async function _writeQuestData(quests: Quest[]): Promise<void> {
-    const questJson = JSON.stringify({quests});
-    await fs.writeFile(process.cwd() + questStorePath, questJson, 'utf-8');
-}
