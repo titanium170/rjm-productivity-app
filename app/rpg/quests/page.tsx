@@ -1,7 +1,7 @@
 import { getQuests } from '@/app/rpg/actions';
-import Panel from '@/app/_components/ui/panel';
+import Panel from '@/components/ui/panel';
 import { Quest } from './quests';
-import Header from '@/app/_components/ui/header';
+import Header from '@/components/ui/header';
 import QuestWithObjectives from './quest-with-objectives';
 import AddQuest from './add-quest';
 
