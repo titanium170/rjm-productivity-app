@@ -4,7 +4,7 @@ import { completeQuest } from "../actions";
 import { Quest } from "./quests";
 
 const Objective = ({ quest: { objective, id, complete } }: { quest: Quest }) => (
-    <>
+    <div className='flex justify-between'>
         <Text className='text-xs indent-2' tagName='label' for='complete-quest'>{objective}</Text>
         <input
             type="checkbox"
@@ -12,7 +12,7 @@ const Objective = ({ quest: { objective, id, complete } }: { quest: Quest }) => 
             checked={complete}
             onClick={async () => (await completeQuest(id))}
         />
-    </>
+    </div>
 );
 
 export default Objective;
